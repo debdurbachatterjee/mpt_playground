@@ -16,9 +16,7 @@ for ticker in tickers:
     data = yf.download(ticker, start=start_date, end=end_date) 
     adj_close_df[ticker] = data['Close']
 
-
 log_returns_df = np.log(adj_close_df / adj_close_df.shift(1)).dropna()
-
 
 cov_matrix = log_returns_df.cov() * 252  # Annualize the covariance matrix
 
